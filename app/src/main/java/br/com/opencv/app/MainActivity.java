@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +30,13 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileDescriptor;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.UUID;
 
 public class MainActivity extends Activity {
 
@@ -85,6 +93,25 @@ public class MainActivity extends Activity {
 
     public void salvarImagem(View v){
 
+        Bitmap imagem = ((BitmapDrawable) this.imageView.getDrawable()).getBitmap();
+
+        String path = Environment.getExternalStorageDirectory().toString();
+        File file = new File(path, "img_"+UUID.randomUUID()+".jpg");
+
+        try{
+            OutputStream fOut = new FileOutputStream(file);
+
+            imagem.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+
+            MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+
+            Toast.makeText(this, "Imagem salva.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "A Imagem não pôde ser salva", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
