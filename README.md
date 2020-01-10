@@ -80,5 +80,5 @@ Será preciso adicionar no ```AndroidManifest.xml``` do App os recursos que ser�
 Abaixo está um exemplo de como é o funcionamento da aplicação que será desenvolvida durante o minicurso.
 
 <p align="center">
-<img src="readme/app.gif" width="60%s">
+<img src="readme/app.gif" width="150px">
 <p/>
