@@ -1,5 +1,5 @@
 # OpenCV Android App
-Aplicativo Android para demontrar a utilização do biblioteca OpenCV, e com ela fazer a aplicação de filtros e manipulação de imagens.
+Aplicativo Android para demonstrar a utilização do biblioteca OpenCV, e com ela fazer a aplicação de filtros e manipulação de imagens.
 
 
 ## **Download do OpenCV**
@@ -74,3 +74,11 @@ Será preciso adicionar no ```AndroidManifest.xml``` do App os recursos que ser�
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
+
+## Funcionamento
+
+Abaixo está um exemplo de como é o funcionamento da aplicação que será desenvolvida durante o minicurso.
+
+<p align="center">
+<img src="readme/app.gif" width="60%s">
+<p/>
